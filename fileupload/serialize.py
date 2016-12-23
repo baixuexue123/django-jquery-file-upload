@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import mimetypes
 import re
 from django.core.urlresolvers import reverse
@@ -34,5 +34,3 @@ def serialize(instance, file_attr='file'):
         'deleteUrl': reverse('upload-delete', args=[instance.pk]),
         'deleteType': 'DELETE',
     }
-
-

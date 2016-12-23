@@ -1,10 +1,11 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 from django.conf.urls import url
+
 from fileupload.views import (
-        BasicVersionCreateView, BasicPlusVersionCreateView,
-        jQueryVersionCreateView, AngularVersionCreateView,
-        PictureCreateView, PictureDeleteView, PictureListView,
-        )
+    BasicVersionCreateView, BasicPlusVersionCreateView,
+    jQueryVersionCreateView, AngularVersionCreateView,
+    PictureCreateView, PictureDeleteView, PictureListView,
+)
 
 urlpatterns = [
     url(r'^basic/$', BasicVersionCreateView.as_view(), name='upload-basic'),

@@ -1,8 +1,9 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 import json
 
 from django.http import HttpResponse
 from django.views.generic import CreateView, DeleteView, ListView
+
 from .models import Picture
 from .response import JSONResponse, response_mimetype
 from .serialize import serialize
@@ -23,6 +24,7 @@ class PictureCreateView(CreateView):
     def form_invalid(self, form):
         data = json.dumps(form.errors)
         return HttpResponse(content=data, status=400, content_type='application/json')
+
 
 class BasicVersionCreateView(PictureCreateView):
     template_name_suffix = '_basic_form'
@@ -55,7 +57,7 @@ class PictureListView(ListView):
     model = Picture
 
     def render_to_response(self, context, **response_kwargs):
-        files = [ serialize(p) for p in self.get_queryset() ]
+        files = [serialize(p) for p in self.get_queryset()]
         data = {'files': files}
         response = JSONResponse(data, mimetype=response_mimetype(self.request))
         response['Content-Disposition'] = 'inline; filename=files.json'
