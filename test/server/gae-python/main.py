@@ -32,6 +32,7 @@ EXPIRATION_TIME = 300  # seconds
 # Set to a regexp for custom pattern matching against the redirect value:
 REDIRECT_ALLOW_TARGET = None
 
+
 class CORSHandler(webapp2.RequestHandler):
     def cors(self):
         headers = self.response.headers
@@ -50,6 +51,7 @@ class CORSHandler(webapp2.RequestHandler):
 
     def options(self, *args, **kwargs):
         pass
+
 
 class UploadHandler(CORSHandler):
     def validate(self, file):
@@ -155,6 +157,7 @@ class UploadHandler(CORSHandler):
         if 'application/json' in self.request.headers.get('Accept'):
             self.response.headers['Content-Type'] = 'application/json'
         self.response.write(s)
+
 
 class FileHandler(CORSHandler):
     def normalize(self, str):
